@@ -22,4 +22,22 @@ def connect(apikey, url):
 
 language_translator = connect(apikey, url)
 
+def englishToFrench(english_text):
+    """english to french translation"""
+    #write the code here
+    if english_text == '':
+        french_text = ''
+    else:
+        output = language_translator.translate(text=english_text, model_id='en-fr').get_result()
+        french_text = output['translations'][0]['translation']
+    return french_text
 
+def frenchToEnglish(french_text):
+    """french to english translation"""
+    #write the code here
+    if french_text == '':
+        english_text = ''
+    else:
+        output = language_translator.translate(text=french_text, model_id='fr-en').get_result()
+        english_text = output['translations'][0]['translation']
+    return english_text
